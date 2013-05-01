@@ -34,7 +34,7 @@
 (defun smath-today ()
   "Return a formatted string describing today's supreme mathematics."
   (let ((day (format-time-string "%d")))
-    (cond ((equal (length day) 2)
+    (cond ((> (string-to-number day) 9)
 	   (let* ((left (s-left 1 day))
 		  (right (s-right 1 day))
 		  (abbt (number-to-string (+ (string-to-number left)
@@ -55,7 +55,7 @@
 			    (smath-lookup abbt))))))
 	   (t
 	    (format "Today's math is %s"
-		    (smath-lookup day))))))
+		    (smath-lookup (s-right 1 day)))))))
 
 (defun smath-lookup (num-string)
   "A lookup table for the numerology of the supreme mathematics."
