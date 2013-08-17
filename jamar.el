@@ -42,22 +42,19 @@
 	     (cond ((> (string-to-number abbt) 9)
 		    (let ((abbt-left (s-left 1 abbt))
 			  (abbt-right (s-right 1 abbt)))
-		      (format "Today's %s is %s %s all being born to %s add %s all being born to %s"
-			      (smath-math-string)
+		      (format "is %s %s all being born to %s add %s all being born to %s"
 			      (smath-lookup left)
 			      (smath-lookup right)
 			      (smath-lookup abbt-left)
 			      (smath-lookup abbt-right)
 			      (smath-lookup abbt-left))))
 		   (t
-		    (format "Today's %s is %s %s all being born to %s"
-			    (smath-math-string)
+		    (format "is %s %s all being born to %s"
 			    (smath-lookup left)
 			    (smath-lookup right)
 			    (smath-lookup abbt))))))
 	   (t
-	    (format "Today's %s is %s"
-		    (smath-math-string)
+	    (format "is %s"
 		    (smath-lookup (s-right 1 day)))))))
 
 (defun smath-math-string ()
@@ -81,8 +78,9 @@
   "Much love to Lord Jamar from Brand Nubian.  See `smath-today'
 for the inner-workings of this function."
   (interactive)
-  (message "%s. %s."
+  (message "%s. Today's %s %s."
 	   (smath-greeting)
+	   (smath-math-string)
 	   (smath-today)))
 
 
