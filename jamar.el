@@ -42,20 +42,27 @@
 	     (cond ((> (string-to-number abbt) 9)
 		    (let ((abbt-left (s-left 1 abbt))
 			  (abbt-right (s-right 1 abbt)))
-		      (format "Today's math is %s %s all being born to %s add %s all being born to %s"
+		      (format "Today's %s is %s %s all being born to %s add %s all being born to %s"
+			      (smath-math-string)
 			      (smath-lookup left)
 			      (smath-lookup right)
 			      (smath-lookup abbt-left)
 			      (smath-lookup abbt-right)
 			      (smath-lookup abbt-left))))
 		   (t
-		    (format "Today's math is %s %s all being born to %s"
+		    (format "Today's %s is %s %s all being born to %s"
+			    (smath-math-string)
 			    (smath-lookup left)
 			    (smath-lookup right)
 			    (smath-lookup abbt))))))
 	   (t
-	    (format "Today's math is %s"
+	    (format "Today's %s is %s"
+		    (smath-math-string)
 		    (smath-lookup (s-right 1 day)))))))
+
+(defun smath-math-string ()
+  "Returns either 'math' or 'mathematics' as strings"
+  (smath-random-choice '("math" "mathematics")))
 
 (defun smath-lookup (num-string)
   "A lookup table for the numerology of the supreme mathematics."
